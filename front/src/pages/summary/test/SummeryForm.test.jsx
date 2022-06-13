@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import SummeryForm from '../SummeryForm';
+import userEvent from "@testing-library/user-event"
 
 test('checkbox is unchecked by default', () => {
     render(<SummeryForm />)
@@ -16,9 +17,13 @@ test('checkbox disable button on first click and enbales on the second click', (
     const checkbox = screen.getByRole("checkbox", { name: /terms and conditions/i, });
     const confirmButton = screen.getByRole('button', { name: /confirm order/i, });
 
-    fireEvent.click(checkbox)
+    userEvent.click(checkbox)
     expect(confirmButton).toBeEnabled();
 
-    fireEvent.click(checkbox)
+    userEvent.click(checkbox)
     expect(confirmButton).toBeDisabled();
 });
+
+test('popover responds to hover', () => {
+
+})
