@@ -1,8 +1,28 @@
 import { useState } from "react";
-import { Form, Button, FormGroup } from "react-bootstrap";
+import {
+    Form,
+    Button,
+    FormGroup,
+    Popover,
+    OverlayTrigger,
+} from "react-bootstrap";
 function SummeryForm(props) {
     const [check, setCheck] = useState(false);
-    const checkboxLabel = (<span>I agrre to <span style={{ color: "blue" }}>terms and conditions</span></span>)
+
+    const popOver = (
+        <Popover id="popover-basic">
+            <Popover.contect>no ice cream well actualy be deliverd</Popover.contect>
+        </Popover>
+    );
+    const checkboxLabel = (
+        <span>
+            I agrre to
+            <OverlayTrigger placement="right" overlay={popOver}>
+
+                <span style={{ color: "blue" }}>terms and conditions</span>
+            </OverlayTrigger>
+        </span>
+    );
     return (
         <Form>
             <FormGroup controlId="terms and conditions">
